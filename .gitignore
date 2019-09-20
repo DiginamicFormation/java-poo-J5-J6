@@ -1,6 +1,7 @@
 *.class
 /target
 /bin
+/.settings
 .classpath
 .project
 org.eclipse.*
