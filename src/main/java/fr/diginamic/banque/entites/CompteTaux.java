@@ -24,6 +24,11 @@ public class CompteTaux extends Compte {
 		this.taux = taux;
 		
 	}
+	
+	@Override
+	public String toString(){
+		return super.toString()+" - Taux:"+taux;
+	}
 
 	/** Getter
 	 * @return the taux
