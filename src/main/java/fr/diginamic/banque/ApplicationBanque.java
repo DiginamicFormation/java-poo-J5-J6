@@ -5,12 +5,13 @@ package fr.diginamic.banque;
 
 import java.util.Scanner;
 
-import fr.diginamic.banque.daos.CompteDaoMem;
 import fr.diginamic.banque.daos.CompteDao;
-import fr.diginamic.banque.entites.Compte;
-import fr.diginamic.banque.entites.CompteTaux;
-import fr.diginamic.banque.entites.Credit;
-import fr.diginamic.banque.entites.Debit;
+import fr.diginamic.banque.daos.CompteDaoMem;
+import fr.diginamic.banque.exception.ExceptionFonctionnelle;
+import fr.diginamic.banque.services.AjouterCompteService;
+import fr.diginamic.banque.services.AjouterOperationService;
+import fr.diginamic.banque.services.ListerComptesService;
+import fr.diginamic.banque.services.SupprimerCompteService;
 
 /** Point d'entrée de l'application de gestion des comptes
  * @author DIGINAMIC
@@ -40,87 +41,31 @@ public class ApplicationBanque {
 			// On exécute l'option correspondant au choix de l'utilisateur
 			switch (choix){
 			case 1:
-				System.out.println("Liste des comptes");
-				Compte[] comptes = dao.lister();
-				for (int i=0; i<comptes.length; i++){
-					System.out.println(comptes[i]);
-				}
+				ListerComptesService lister = new ListerComptesService();
+				lister.traiter(scanner, dao);
 				break;
 			case 2:
-				System.out.println("Ajout d’un nouveau compte");
-				System.out.println("Veuillez saisir un numéro:");
-				String numero= scanner.nextLine();
-			
-				System.out.println("Veuillez saisir un type de compte (1: NORMAL, 2: REMUNERE):");
-				String type = scanner.nextLine();
-				
-				System.out.println("Veuillez saisir un solde initial:");
-				String saisieSolde = scanner.nextLine();
-				double soldeInitial = Double.parseDouble(saisieSolde);
-				
-				if (type.equals("1")){
-					Compte nvCompte = new Compte(numero, soldeInitial);
-					dao.sauvegarder(nvCompte);
-				}
-				else if (type.equals("2")){
-					System.out.println("Veuillez saisir un taux:");
-					String saisieTaux = scanner.nextLine();
-					
-					double taux = Double.parseDouble(saisieTaux);
-					
-					CompteTaux nvCompte = new CompteTaux(numero, soldeInitial, taux);
-					dao.sauvegarder(nvCompte);
-				}
-				else {
-					System.out.println("Le type de compte "+type+" n'existe pas.");
+				try {
+					AjouterCompteService ajouter = new AjouterCompteService();
+					ajouter.traiter(scanner, dao);
+				} catch (ExceptionFonctionnelle e) {
+					System.out.println(e.getMessage());
 				}
 				break;
 			case 3:
-				System.out.println("Liste des comptes");
-				comptes = dao.lister();
-				for (int i=0; i<comptes.length; i++){
-					System.out.println(comptes[i]);
-				}
-				System.out.println("Ajout d’une opération à un compte");
-				System.out.println("Veuillez saisir le numéro de compte concerné:");
-				numero = scanner.nextLine();
-				
-				Compte compte = dao.getCompte(numero);
-				if (compte!=null){
-					
-					System.out.println("Veuillez saisir le type d'opération (1: CREDIT, 2: DEBIT):");
-					type = scanner.nextLine();
-					
-					System.out.println("Veuillez saisir la date:");
-					String date = scanner.nextLine();
-					
-					System.out.println("Veuillez saisir le montant:");
-					String saisieMontant = scanner.nextLine();
-					double montant = Double.parseDouble(saisieMontant);
-					
-					if (type.equals("1")){
-						Credit credit = new Credit(date, montant);
-						compte.ajouterOperation(credit);
-					}
-					else if (type.equals("2")){
-						Debit debit = new Debit(date, montant);
-						compte.ajouterOperation(debit);
-					}
-					else {
-						System.out.println("Le type d'opération "+type+" n'existe pas.");
-					}
-				}
-				else {
-					System.out.println("Le compte "+numero+" n'existe pas.");
+				try {
+					AjouterOperationService ajouterOpe = new AjouterOperationService();
+					ajouterOpe.traiter(scanner, dao);
+				} catch (ExceptionFonctionnelle e) {
+					System.out.println(e.getMessage());
 				}
 				break;
 			case 4:
-				System.out.println("Suppression d’un compte");
-				System.out.println("Veuillez saisir le numéro du compte à supprimer:");
-				numero = scanner.nextLine();
-				boolean result = dao.supprimer(numero);
-				if (!result){
-					System.out.println("Le compte "+numero+" n'existe pas");
+				try {
+					SupprimerCompteService supprimer = new SupprimerCompteService();
+					supprimer.traiter(scanner, dao);
+				} catch (ExceptionFonctionnelle e) {
+					System.out.println(e.getMessage());
 				}
 				break;
 			case 99:
