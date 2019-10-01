@@ -110,6 +110,7 @@ public class ApplicationBanque {
 				}
 				break;
 			case 4:
+				System.out.println("Suppression d’un compte");
 				System.out.println("Veuillez saisir le numéro du compte concerné:");
 				numero = scanner.nextLine();
 				boolean result = dao.supprimer(numero);
@@ -117,8 +118,8 @@ public class ApplicationBanque {
 					System.out.println("Le compte "+numero+" n'existe pas");
 				}
 				break;
-			case 5:
-				System.out.println("Au revoir.");
+			case 99:
+				System.out.println("Au revoir \u2639");
 				break;
 			}
 		} while (choix!=99);
