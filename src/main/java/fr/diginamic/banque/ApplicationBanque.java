@@ -76,6 +76,11 @@ public class ApplicationBanque {
 				}
 				break;
 			case 3:
+				System.out.println("Liste des comptes");
+				comptes = dao.lister();
+				for (int i=0; i<comptes.length; i++){
+					System.out.println(comptes[i]);
+				}
 				System.out.println("Ajout d’une opération à un compte");
 				System.out.println("Veuillez saisir le numéro de compte concerné:");
 				numero = scanner.nextLine();
@@ -111,7 +116,7 @@ public class ApplicationBanque {
 				break;
 			case 4:
 				System.out.println("Suppression d’un compte");
-				System.out.println("Veuillez saisir le numéro du compte concerné:");
+				System.out.println("Veuillez saisir le numéro du compte à supprimer:");
 				numero = scanner.nextLine();
 				boolean result = dao.supprimer(numero);
 				if (!result){

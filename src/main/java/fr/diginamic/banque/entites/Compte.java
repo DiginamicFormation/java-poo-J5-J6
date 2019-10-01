@@ -82,7 +82,7 @@ public class Compte {
 	
 	@Override
 	public String toString(){
-		return "Numéro de compte: "+numero+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
+		return "Numéro : "+numero+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
 	}
 
 	/** Getter

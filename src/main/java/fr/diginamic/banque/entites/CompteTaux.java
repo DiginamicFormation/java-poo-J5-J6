@@ -27,7 +27,7 @@ public class CompteTaux extends Compte {
 	
 	@Override
 	public String toString(){
-		return super.toString()+" - Taux:"+taux;
+		return super.toString()+" - Taux:"+taux+" %";
 	}
 
 	/** Getter
