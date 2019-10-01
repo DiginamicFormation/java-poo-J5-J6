@@ -12,14 +12,14 @@ import fr.diginamic.banque.entites.CompteTaux;
 import fr.diginamic.banque.entites.Credit;
 import fr.diginamic.banque.entites.Debit;
 
-/**
+/** Point d'entrée de l'application de gestion des comptes
  * @author DIGINAMIC
  *
  */
 public class ApplicationBanque {
 
-	/**
-	 * @param args
+	/** Point d'entrée
+	 * @param args non utilisés ici
 	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
