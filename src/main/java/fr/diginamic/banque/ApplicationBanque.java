@@ -88,6 +88,7 @@ public class ApplicationBanque {
 		System.out.println("3. Ajouter une opération à un compte");
 		System.out.println("4. Supprimer un compte");
 		System.out.println("99. Sortir");
+		System.out.println("Veuillez effectuer un choix:");
 	}
 
 }

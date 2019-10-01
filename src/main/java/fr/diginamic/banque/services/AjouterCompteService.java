@@ -5,6 +5,7 @@ import java.util.Scanner;
 import fr.diginamic.banque.daos.CompteDao;
 import fr.diginamic.banque.entites.Compte;
 import fr.diginamic.banque.entites.CompteTaux;
+import fr.diginamic.banque.enumeration.CategorieCompte;
 import fr.diginamic.banque.exception.ExceptionFonctionnelle;
 
 /** Traite le cas d'utilisation d'ajout d'un compte
@@ -27,7 +28,7 @@ public class AjouterCompteService extends CompteMenuService {
 		double soldeInitial = Double.parseDouble(saisieSolde);
 		
 		if (type.equals("1")){
-			Compte nvCompte = new Compte(numero, soldeInitial);
+			Compte nvCompte = new Compte(numero, soldeInitial, CategorieCompte.NORMAL);
 			dao.sauvegarder(nvCompte);
 		}
 		else if (type.equals("2")){

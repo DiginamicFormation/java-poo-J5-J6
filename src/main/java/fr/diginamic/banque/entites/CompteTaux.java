@@ -1,5 +1,7 @@
 package fr.diginamic.banque.entites;
 
+import fr.diginamic.banque.enumeration.CategorieCompte;
+
 /** Représente un compte rémunéré avec un taux. 
  * Par héritage la classe CompteTaux possède également les attributs et méthodes de la classe Compte.
  * @author DIGINAMIC
@@ -18,7 +20,7 @@ public class CompteTaux extends Compte {
 	public CompteTaux(String numero, double solde, double taux) {
 		
 		// Appel du constructeur de la classe mère
-		super(numero, solde);
+		super(numero, solde, CategorieCompte.TAUX);
 		
 		// Valorisation du taux
 		this.taux = taux;

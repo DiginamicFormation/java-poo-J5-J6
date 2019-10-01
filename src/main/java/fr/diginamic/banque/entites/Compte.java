@@ -1,5 +1,7 @@
 package fr.diginamic.banque.entites;
 
+import fr.diginamic.banque.enumeration.CategorieCompte;
+
 /**
  * Représente un compte bancaire
  * 
@@ -16,6 +18,9 @@ public class Compte {
 	
 	/** operations : Operation[]*/
 	private Operation[] operations=new Operation[0];
+	
+	/** categorie : CategorieCompte*/
+	private CategorieCompte categorie;
 
 	/**
 	 * Constructeur
@@ -24,11 +29,13 @@ public class Compte {
 	 *            numéro de compte
 	 * @param solde
 	 *            solde
+	 * @param categorie categorie
 	 */
-	public Compte(String numero, double solde) {
+	public Compte(String numero, double solde, CategorieCompte categorie) {
 		super();
 		this.numero = numero;
 		this.soldeInitial = solde;
+		this.categorie = categorie;
 	}
 	
 
@@ -82,7 +89,7 @@ public class Compte {
 	
 	@Override
 	public String toString(){
-		return "Numéro : "+numero+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
+		return "Numéro : "+numero+" - Type :"+categorie.getLibelle()+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
 	}
 
 	/** Getter
@@ -111,6 +118,22 @@ public class Compte {
 	 */
 	public void setSoldeInitial(double soldeInitial) {
 		this.soldeInitial = soldeInitial;
+	}
+
+
+	/** Getter
+	 * @return the categorie
+	 */
+	public CategorieCompte getCategorie() {
+		return categorie;
+	}
+
+
+	/** Setter
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(CategorieCompte categorie) {
+		this.categorie = categorie;
 	}
 
 

@@ -5,6 +5,7 @@ import fr.diginamic.banque.entites.CompteTaux;
 import fr.diginamic.banque.entites.Credit;
 import fr.diginamic.banque.entites.Debit;
 import fr.diginamic.banque.entites.Operation;
+import fr.diginamic.banque.enumeration.CategorieCompte;
 
 public class TestBanque {
 
@@ -12,7 +13,7 @@ public class TestBanque {
 		
 		Compte[] comptes = new Compte[2];
 		
-		Compte compte = new Compte("1", 256.5);
+		Compte compte = new Compte("1", 256.5, CategorieCompte.NORMAL);
 		comptes[0]=compte;
 		
 		compte.ajouterOperation(new Debit("12/09/2019", 100));
