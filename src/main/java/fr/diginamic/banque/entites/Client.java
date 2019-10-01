@@ -5,6 +5,9 @@ package fr.diginamic.banque.entites;
  *
  */
 public class Client {
+	
+	/** id : identifiant du client*/
+	private int id;
 
 	/** nom : String*/
 	private String nom;
@@ -15,12 +18,16 @@ public class Client {
 	/** comptes : Compte[]*/
 	private Compte[] comptes = new Compte[0];
 	
+	/** IDENTIFIANT : int*/
+	private static int compteur=1;
+	
 	/** Constructeur
 	 * @param nom nom 
 	 * @param prenom prénom
 	 */
 	public Client(String nom, String prenom) {
 		super();
+		this.id=compteur++;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
@@ -57,7 +64,7 @@ public class Client {
 	@Override
 	public String toString(){
 		
-		return nom+" "+prenom+" - Nombre de comptes:"+comptes.length+" - Solde global:"+getSolde();
+		return "Identifiant:"+id+" - "+nom+" "+prenom+" - Nombre de comptes:"+comptes.length+" - Solde global:"+getSolde();
 	}
 	
 	/** Getter
@@ -83,5 +90,19 @@ public class Client {
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	/** Getter
+	 * @return the comptes
+	 */
+	public Compte[] getComptes() {
+		return comptes;
+	}
+
+	/** Setter
+	 * @param comptes the comptes to set
+	 */
+	public void setComptes(Compte[] comptes) {
+		this.comptes = comptes;
 	}
 }

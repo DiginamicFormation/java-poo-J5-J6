@@ -56,7 +56,12 @@ public class Compte {
 	public double getSolde(){
 		double solde=soldeInitial;
 		for (int i=0; i<operations.length; i++){
-			solde+=operations[i].getMontant();
+			if (operations[i].getType().equals(Operation.TYPE_CREDIT)){
+				solde+=operations[i].getMontant();
+			}
+			else {
+				solde-=operations[i].getMontant();
+			}
 		}
 		return solde;
 	}
@@ -77,7 +82,7 @@ public class Compte {
 	
 	@Override
 	public String toString(){
-		return numero+" Nb opérations:"+operations.length+ " Solde:"+getSolde();
+		return "Numéro de compte: "+numero+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
 	}
 
 	/** Getter
