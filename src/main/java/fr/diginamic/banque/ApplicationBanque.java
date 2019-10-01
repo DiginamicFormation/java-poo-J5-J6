@@ -40,12 +40,14 @@ public class ApplicationBanque {
 			// On exécute l'option correspondant au choix de l'utilisateur
 			switch (choix){
 			case 1:
+				System.out.println("Liste des comptes");
 				Compte[] comptes = dao.lister();
 				for (int i=0; i<comptes.length; i++){
 					System.out.println(comptes[i]);
 				}
 				break;
 			case 2:
+				System.out.println("Ajout d’un nouveau compte");
 				System.out.println("Veuillez saisir un numéro:");
 				String numero= scanner.nextLine();
 			
@@ -60,7 +62,7 @@ public class ApplicationBanque {
 					Compte nvCompte = new Compte(numero, soldeInitial);
 					dao.sauvegarder(nvCompte);
 				}
-				else {
+				else if (type.equals("2")){
 					System.out.println("Veuillez saisir un taux:");
 					String saisieTaux = scanner.nextLine();
 					
@@ -69,8 +71,12 @@ public class ApplicationBanque {
 					CompteTaux nvCompte = new CompteTaux(numero, soldeInitial, taux);
 					dao.sauvegarder(nvCompte);
 				}
+				else {
+					System.out.println("Le type de compte "+type+" n'existe pas.");
+				}
 				break;
 			case 3:
+				System.out.println("Ajout d’une opération à un compte");
 				System.out.println("Veuillez saisir le numéro de compte concerné:");
 				numero = scanner.nextLine();
 				
@@ -91,10 +97,16 @@ public class ApplicationBanque {
 						Credit credit = new Credit(date, montant);
 						compte.ajouterOperation(credit);
 					}
-					else {
+					else if (type.equals("2")){
 						Debit debit = new Debit(date, montant);
 						compte.ajouterOperation(debit);
 					}
+					else {
+						System.out.println("Le type d'opération "+type+" n'existe pas.");
+					}
+				}
+				else {
+					System.out.println("Le compte "+numero+" n'existe pas.");
 				}
 				break;
 			case 4:
@@ -119,7 +131,7 @@ public class ApplicationBanque {
 	 * Affichage du menu
 	 */
 	private static void afficherMenu() {
-		System.out.println("***** Administration bancaire *****");
+		System.out.println("***** Administration des comptes *****");
 		System.out.println("1. Lister les comptes");
 		System.out.println("2. Ajouter un nouveau compte ");
 		System.out.println("3. Ajouter une opération à un compte");
