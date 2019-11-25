@@ -27,8 +27,8 @@ public class FusionMap {
 		map2.put(5, "Bleu");
 		map2.put(6, "Orange");
 
-		// TODO Créer une map appelée map3 et qui contient les données des 2
-		// maps précédentes avec les mêmes clés et les mêmes valeurs
-
+		HashMap<Integer, String> map3 = new HashMap<Integer, String>();
+		map3.putAll(map1);
+		map3.putAll(map2);
 	}
 }
