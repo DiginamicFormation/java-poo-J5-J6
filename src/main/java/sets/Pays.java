@@ -1,13 +1,17 @@
 package sets;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 /**
  * Pays : classe contenant un nom, un nb d'habitants et un PIB/habitant
  */
 public class Pays {
 	/** nom */
 	private String nom;
+	
 	/** nbHabitants */
 	private long nbHabitants;
+	
 	/** pibParHabitant */
 	private long pibParHabitant;
 
@@ -24,6 +28,33 @@ public class Pays {
 		this.nom = nom;
 		this.nbHabitants = nbHabitants;
 		this.pibParHabitant = pibParHabitant;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (nbHabitants ^ (nbHabitants >>> 32));
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + (int) (pibParHabitant ^ (pibParHabitant >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Pays)) {
+			return false;
+		}
+		
+		Pays other = (Pays) obj; //downcasting
+		
+		// Utilisation de EqualsBuilder.
+		EqualsBuilder builder = new EqualsBuilder();
+		boolean resultat = builder.append(this.nom, other.getNom())
+					      .append(this.nbHabitants, other.getNbHabitants())
+					      .append(this.pibParHabitant, other.getPibParHabitant())
+					      .isEquals();
+		return resultat;
 	}
 
 	/**

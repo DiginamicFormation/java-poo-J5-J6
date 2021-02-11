@@ -1,7 +1,8 @@
 package sets;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  */
@@ -9,7 +10,7 @@ public class TestSetString {
 
 	public static void main(String[] args) {
 		HashSet<String> set = new HashSet<>();
-		set.addAll(Arrays.asList("USA", "France", "Allemagne", "UK", "Italie", "Japon", "Chine", "Russie", "Inde"));
+		set.addAll(Set.of("USA", "France", "Allemagne", "UK", "Italie", "Japon", "Chine", "Russie", "Inde"));
 
 		// Recherchez le pays dans cette liste qui a le plus grand nombre de lettres
 
@@ -30,6 +31,11 @@ public class TestSetString {
 		for (String nom : set) {
 			System.out.println(nom);
 		}
+		
+		List<String> list = List.of("Xebia", "love", "Java");
+		
+		// Peut aussi s'écrire
+		var otherList = List.of("Xebia", "love", "Java");
 	}
 
 }
