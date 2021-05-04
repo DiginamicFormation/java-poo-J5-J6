@@ -39,7 +39,7 @@ public class Ville implements Comparable<Ville> {
 	
 	@Override
 	public String toString() {
-		return "Ville [nom=" + nom + ", nbHabitants=" + nbHabitants + "]";
+		return nom + " avec " + nbHabitants+" habitants";
 	}
 	
 	
