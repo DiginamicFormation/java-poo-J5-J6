@@ -5,8 +5,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/** TP sur les calendars
+ * @author RichardBONNAMY
+ *
+ */
 public class TestCalendar {
 
+	/** Point d'entrée
+	 * @param args arguments
+	 */
 	public static void main(String[] args) {
 		// TODO Utilisez la classe java.util.Calendar pour créer une instance de Date à la date du
 		// 19 mai 2016 à 23h59 et 30 secondes et affichez la au format suivant :

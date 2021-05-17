@@ -1,49 +1,27 @@
 package fr.diginamic.banque.entites;
 
-import fr.diginamic.banque.enumeration.CategorieCompte;
-
-/** Représente un compte rémunéré avec un taux. 
- * Par héritage la classe CompteTaux possède également les attributs et méthodes de la classe Compte.
- * @author DIGINAMIC
- *
- */
 public class CompteTaux extends Compte {
 
-	/** taux : double*/
-	private double taux;
-	
-	/** Constructeur
-	 * @param numero numéro de compte
-	 * @param solde solde
-	 * @param taux taux de rémunération
-	 */
-	public CompteTaux(String numero, double solde, double taux) {
-		
-		// Appel du constructeur de la classe mère
-		super(numero, solde, CategorieCompte.TAUX);
-		
-		// Valorisation du taux
-		this.taux = taux;
-		
+	private double tauxRemu;
+
+	public CompteTaux(String numero, double solde, double tauxRemu) {
+		super(numero, solde);
+		this.tauxRemu = tauxRemu;
 	}
 	
 	@Override
-	public String toString(){
-		return super.toString()+" - Taux:"+taux+" %";
+	public String toString() {
+		String infosClasseMere = super.toString();
+		return infosClasseMere + " - taux de rémunération : "+tauxRemu;
+	}
+	
+	public double getTauxRemu() {
+		return tauxRemu;
 	}
 
-	/** Getter
-	 * @return the taux
-	 */
-	public double getTaux() {
-		return taux;
+	public void setTauxRemu(double tauxRemu) {
+		this.tauxRemu = tauxRemu;
 	}
 
-	/** Setter
-	 * @param taux the taux to set
-	 */
-	public void setTaux(double taux) {
-		this.taux = taux;
-	}
-
+	
 }

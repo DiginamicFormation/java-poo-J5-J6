@@ -1,66 +1,73 @@
 package tri;
 
+import fr.diginamic.testenumeration.Continent;
+
 /**
  * @author RichardBONNAMY
  *
  */
 public class Ville implements Comparable<Ville> {
 
-	/** nom */
+	/** Nom */
 	private String nom;
 	
-	/** nbHabitants */
+	/** Nombre d'habitants */
 	private int nbHabitants;
 	
-	/** departement */
-	private String departement;
-
+	/** continent */
+	private Continent continent;
+	
 	/** Constructeur
-	 * @param nom
-	 * @param nbHabitants
+	 * @param nom nom
+	 * @param nbHabitants nombre d'habitants
 	 */
-	public Ville(String nom, int nbHabitants, String departement) {
+	public Ville(String nom, int nbHabitants, Continent continent) {
 		super();
 		this.nom = nom;
 		this.nbHabitants = nbHabitants;
-		this.departement = departement;
+		this.continent = continent;
 	}
 	
+	@Override
+	public boolean equals(Object objet) {
+		if (!(objet instanceof Ville)) {
+			return false;
+		}
+		Ville autre = (Ville)objet;
+		return ((this.nom==null && autre.getNom()==null) || this.nom.equals(autre.getNom())) && this.nbHabitants == autre.getNbHabitants();
+	}
+	
+	@Override
 	public int compareTo(Ville autre) {
-		if (this.nbHabitants > autre.getNbHabitants()) {
-			return 1;
-		}
-		else if (this.nbHabitants <autre.getNbHabitants()) {
-			return -1;
-		}
-		return 0;
+		return this.nbHabitants - autre.getNbHabitants();
 	}
-	
 	
 	@Override
 	public String toString() {
-		return "Ville [nom=" + nom + ", nbHabitants=" + nbHabitants + "]";
+		return nom+" "+nbHabitants+" "+continent.getLibelle();
 	}
-	
-	
+
 	/** Getter
 	 * @return the nom
 	 */
 	public String getNom() {
 		return nom;
 	}
+
 	/** Setter
 	 * @param nom the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	/** Getter
 	 * @return the nbHabitants
 	 */
 	public int getNbHabitants() {
 		return nbHabitants;
 	}
+
 	/** Setter
 	 * @param nbHabitants the nbHabitants to set
 	 */
@@ -69,17 +76,19 @@ public class Ville implements Comparable<Ville> {
 	}
 
 	/** Getter
-	 * @return the departement
+	 * @return the continent
 	 */
-	public String getDepartement() {
-		return departement;
+	public Continent getContinent() {
+		return continent;
 	}
 
 	/** Setter
-	 * @param departement the departement to set
+	 * @param continent the continent to set
 	 */
-	public void setDepartement(String departement) {
-		this.departement = departement;
+	public void setContinent(Continent continent) {
+		this.continent = continent;
 	}
+
+
 
 }

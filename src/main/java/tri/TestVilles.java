@@ -2,46 +2,42 @@ package tri;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
+
+import fr.diginamic.testenumeration.Continent;
 
 public class TestVilles {
 
 	public static void main(String[] args) {
 		List<Ville> liste = new ArrayList<>();
-		liste.add(new Ville("Nice", 343_000, "06"));
-		liste.add(new Ville("Carcassonne", 47_800, "66"));
-		liste.add(new Ville("Narbonne", 53_400, "66"));
-		liste.add(new Ville("Lyon", 484_000, "69"));
-		liste.add(new Ville("Foix", 9_700, "09"));
-		liste.add(new Ville("Pau", 77_200, "64"));
-		liste.add(new Ville("Marseille", 850_700, "13"));
-		liste.add(new Ville("Tarbes", 40_600, "64"));
+		liste.add(new Ville("Nice", 343_000, Continent.EUROPE));
+		liste.add(new Ville("Carcassonne", 47_800, Continent.EUROPE));
+		liste.add(new Ville("Narbonne", 53_400, Continent.EUROPE));
+		liste.add(new Ville("Lyon", 484_000, Continent.EUROPE));
+		liste.add(new Ville("Foix", 9_700, Continent.EUROPE));
+		liste.add(new Ville("Pau", 77_200, Continent.EUROPE));
+		liste.add(new Ville("Marseille", 850_700, Continent.EUROPE));
+		liste.add(new Ville("Tarbes", 40_600, Continent.EUROPE));
 
-		// Comptage du nombre de villes par département.
+		System.out.println("Tri sur le critère de tri contenu dans la classe Ville :");
+		Collections.sort(liste);
 		
-		// Etape 1: création d'une HashMap qui stocke:
-		// - en clé: le département (type String)
-		// - en valeur: le compteur (type Integer)
-		HashMap<String, Integer> map = new HashMap<>();
-
-		// Etape 2: parcours de la liste des villes
-		for (Ville v : liste) {
-
-			// Etape 3: on regarde s'il existe un compteur
-			//          pour le département de la ville
-			Integer compteur = map.get(v.getDepartement());
-
-			// Etape 4: s'il n'existe pas on créé le compteur avec la valeur 1
-			if (compteur==null) {
-				map.put(v.getDepartement(), 1);
-			}
-			// Etape 5: s'il existe on l'incrémente et on le restocke dans la map
-			//          avec sa nouvelle valeur
-			else {
-				compteur++;
-				map.put(v.getDepartement(), compteur);
-			}
+		for (Ville v: liste) {
+			System.out.println(v);
+		}
+		
+		System.out.println("Tri sur le nom de la ville trié par ordre alphabétique :");
+		Collections.sort(liste, new ComparatorNom());
+		
+		for (Ville v: liste) {
+			System.out.println(v);
+		}
+		
+		System.out.println("Tri sur le nombre d'habitants :");
+		Collections.sort(liste, new ComparatorHabitant());
+		
+		for (Ville v: liste) {
+			System.out.println(v);
 		}
 
 	}

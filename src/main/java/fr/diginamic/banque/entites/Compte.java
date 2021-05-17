@@ -1,140 +1,58 @@
 package fr.diginamic.banque.entites;
 
-import fr.diginamic.banque.enumeration.CategorieCompte;
-
-/**
- * Représente un compte bancaire
- * 
- * @author DIGINAMIC
+/** Représente un compte bancaire
+ * @author RichardBONNAMY
  *
  */
 public class Compte {
 
-	/** numero : String */
+	/** Numéro du compte  */
 	private String numero;
 	
-	/** client : Client */
-	private double soldeInitial;
+	/** Solde du compte  */
+	private double solde;
 	
-	/** operations : Operation[]*/
-	private Operation[] operations=new Operation[0];
-	
-	/** categorie : CategorieCompte*/
-	private CategorieCompte categorie;
-
-	/**
-	 * Constructeur
-	 * 
-	 * @param numero
-	 *            numéro de compte
-	 * @param solde
-	 *            solde
-	 * @param categorie categorie
+	/** Constructeur
+	 * @param numero numéro
+	 * @param solde solde
 	 */
-	public Compte(String numero, double solde, CategorieCompte categorie) {
-		super();
+	public Compte(String numero, double solde) {
 		this.numero = numero;
-		this.soldeInitial = solde;
-		this.categorie = categorie;
+		this.solde = solde;
 	}
-	
 
-	/** Permet d'ajouter une opération au compte
-	 * @param compte compte
-	 */
-	public void ajouterOperation(Operation operation){
-		
-		// Création du nouveau tableau de taille+1 par rapport au précédent
-		Operation[] newOperations = new Operation[operations.length+1];
-		
-		// Copie de l'intégralité de l'ancien tableau dans le nouveau
-		System.arraycopy(operations, 0, newOperations, 0, operations.length);
-		
-		// Dans la "dernière case" du nouveau tableau j'ajoute l'opération passée en argument de la méthode
-		newOperations[newOperations.length-1]=operation;
-		
-		// Enfin je valorise mon attribut d'instance operations avec le nouveau tableau newOperations
-		operations=newOperations;
-	}
-	
-	/** Retourne le solde global de tous les comptes du client
-	 * @return double
-	 */
-	public double getSolde(){
-		double solde=soldeInitial;
-		for (int i=0; i<operations.length; i++){
-			if (operations[i].getType().equals(Operation.TYPE_CREDIT)){
-				solde+=operations[i].getMontant();
-			}
-			else {
-				solde-=operations[i].getMontant();
-			}
-		}
-		return solde;
-	}
-	
-	/** Retourne le solde global de toutes les opérations dont le type est passé en paramètre
-	 * @param type type des opérations recherchées
-	 * @return double
-	 */
-	public double getSolde(String type){
-		double solde=0;
-		for (int i=0; i<operations.length; i++){
-			if (type!=null && operations[i].getType().equals(type)){
-				solde+=operations[i].getMontant();
-			}
-		}
-		return solde;
-	}
-	
 	@Override
-	public String toString(){
-		return "Numéro : "+numero+" - Type :"+categorie.getLibelle()+" - Nb opérations:"+operations.length+ " - Solde:"+getSolde();
+	public String toString() {
+		String chaine = "Mon compte a le numéro " + numero + " et un solde de " + solde + " €.";
+		return chaine;
 	}
-
+	
 	/** Getter
-	 * @return the numero
+	 * @return numero
 	 */
 	public String getNumero() {
 		return numero;
 	}
-
+	
 	/** Setter
-	 * @param numero the numero to set
+	 * @param numero numero
 	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-
+	
 	/** Getter
-	 * @return the soldeInitial
+	 * @return solde
 	 */
-	public double getSoldeInitial() {
-		return soldeInitial;
+	public double getSolde() {
+		return solde;
 	}
-
+	
 	/** Setter
-	 * @param soldeInitial the soldeInitial to set
+	 * @param solde solde
 	 */
-	public void setSoldeInitial(double soldeInitial) {
-		this.soldeInitial = soldeInitial;
+	public void setSolde(double solde) {
+		this.solde = solde;
 	}
-
-
-	/** Getter
-	 * @return the categorie
-	 */
-	public CategorieCompte getCategorie() {
-		return categorie;
-	}
-
-
-	/** Setter
-	 * @param categorie the categorie to set
-	 */
-	public void setCategorie(CategorieCompte categorie) {
-		this.categorie = categorie;
-	}
-
-
+	
 }

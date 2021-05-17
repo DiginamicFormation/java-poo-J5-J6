@@ -2,13 +2,13 @@ package fr.diginamic.banque.entites;
 
 public class Debit extends Operation {
 
-	public Debit(String date, double montant) {
-		super(date, montant);
+	public Debit(double montant, String date) {
+		super(montant, date);
 	}
 
 	@Override
 	public String getType() {
-		return TYPE_DEBIT;
+		return "DEBIT";
 	}
 
 }

@@ -3,8 +3,15 @@ package fr.diginamic.dates;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/** TP sur les dates
+ * @author RichardBONNAMY
+ *
+ */
 public class TestDates {
 
+	/** Point d'entrée
+	 * @param args arguments
+	 */
 	public static void main(String[] args) {
 		// Créez une instance de la classe java.util.Date à la date du jour en utilisant un de ses constructeurs
 		Date dateJour = new Date(120, 6, 8);
