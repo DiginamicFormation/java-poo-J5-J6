@@ -21,7 +21,7 @@ public class ManipulationFichier {
 	public static void main(String[] args) throws IOException {
 		
 		// Critère de filtrage des villes
-		int populationMin = 50000;
+		int populationMin = 25000;
 		
 		// Lecture du fichier de recensement
 		Path fichier = Paths.get("C:/Temp/recensement.csv");

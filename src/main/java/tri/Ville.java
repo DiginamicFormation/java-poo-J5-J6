@@ -1,7 +1,5 @@
 package tri;
 
-import fr.diginamic.testenumeration.Continent;
-
 /**
  * @author RichardBONNAMY
  *
@@ -14,18 +12,14 @@ public class Ville implements Comparable<Ville> {
 	/** Nombre d'habitants */
 	private int nbHabitants;
 	
-	/** continent */
-	private Continent continent;
-	
 	/** Constructeur
 	 * @param nom nom
 	 * @param nbHabitants nombre d'habitants
 	 */
-	public Ville(String nom, int nbHabitants, Continent continent) {
+	public Ville(String nom, int nbHabitants) {
 		super();
 		this.nom = nom;
 		this.nbHabitants = nbHabitants;
-		this.continent = continent;
 	}
 	
 	@Override
@@ -44,7 +38,7 @@ public class Ville implements Comparable<Ville> {
 	
 	@Override
 	public String toString() {
-		return nom+" "+nbHabitants+" "+continent.getLibelle();
+		return nom+" "+nbHabitants;
 	}
 
 	/** Getter
@@ -74,21 +68,4 @@ public class Ville implements Comparable<Ville> {
 	public void setNbHabitants(int nbHabitants) {
 		this.nbHabitants = nbHabitants;
 	}
-
-	/** Getter
-	 * @return the continent
-	 */
-	public Continent getContinent() {
-		return continent;
-	}
-
-	/** Setter
-	 * @param continent the continent to set
-	 */
-	public void setContinent(Continent continent) {
-		this.continent = continent;
-	}
-
-
-
 }

@@ -31,11 +31,6 @@ public class TestSetString {
 		for (String nom : set) {
 			System.out.println(nom);
 		}
-		
-		List<String> list = List.of("Xebia", "love", "Java");
-		
-		// Peut aussi s'écrire
-		var otherList = List.of("Xebia", "love", "Java");
 	}
 
 }
